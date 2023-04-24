@@ -19,7 +19,7 @@ Both ```tkinter``` and ```hashlib``` libraries are included in Python 3.x, so no
 To use the application, simply run the script using Python:
 
 ```bash
-python3 hash_checker.py
+python3 SHA_Check2.py
 ```
 The Hash Checker window will open, allowing the user to:
 1. Select a file 
@@ -64,9 +64,16 @@ To copy the calculated hash value to the clipboard, click the Copy button next t
 
 The code defines a graphical user interface (GUI) application called "Hash Checker" which allows the user to browse for a file, select a hashing algorithm (SHA-256, SHA-1, or MD5), calculate the hash value of the selected file using the selected algorithm, compare the calculated hash value with a user-provided check value, and display the result of the comparison.
 
+Import the required modules.
+
+```python
+import hashlib
+import tkinter as tk
+from tkinter import filedialog
+```
+
 The GUI is implemented using the ```tkinter``` module, which provides a set of Python bindings for the Tk GUI toolkit. The code defines a class called App, which encapsulates the application's logic and GUI elements.
 
-<br><br/>
 
 
 ```python
