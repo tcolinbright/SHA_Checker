@@ -1,4 +1,4 @@
-# Hash Checker
+# SHA_Check2.py
 
 The Hash Checker application allows users to calculate the hash value of a file and compare it with a given hash value to verify the file's integrity. The user interface of the application is implemented using the ```tkinter``` library.
 
