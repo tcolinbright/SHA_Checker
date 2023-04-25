@@ -12,6 +12,7 @@ class App:
         self.hash_value = tk.StringVar()
         self.check_value = tk.StringVar()
         self.hash_matched = tk.BooleanVar(value=False)
+        self.result_text = tk.StringVar(value="")
 
         file_frame = tk.Frame(master)
         file_frame.pack(padx=10, pady=10)
@@ -51,8 +52,8 @@ class App:
         result_frame.pack(padx=10, pady=10)
         result_label = tk.Label(result_frame, text="Result:")
         result_label.pack(side=tk.LEFT)
-        self.result_entry = tk.Entry(result_frame, textvariable=self.hash_matched, width=40, state="readonly")
-        self.result_entry.pack(side=tk.LEFT, padx=10)
+        self.result_label = tk.Label(result_frame, textvariable=self.result_text, width=40, relief="sunken", bd=1, anchor="w", padx=2)
+        self.result_label.pack(side=tk.LEFT, padx=10)
 
         check_button = tk.Button(master, text="Check Hash", command=self.check_hash)
         check_button.pack(pady=10)
@@ -77,19 +78,24 @@ class App:
                 self.hash_value.set(hash_value)
 
                 check_value = self.check_value.get()
+                
                 if check_value:
                     self.hash_matched.set(hash_value == check_value)
 
                     if self.hash_matched.get():
-                        self.result_entry.config(bg='green')
+                        self.result_label.config(bg='green', text="Match")
+                        self.result_text.set("Match")
                     else:
-                        self.result_entry.config(bg='red')
+                        self.result_label.config(bg='red', text="No Match")
+                        self.result_text.set("No Match")
+
                 else:
                     self.hash_matched.set("")
-                    self.result_entry.config(bg='white')
+                    self.result_label.config(bg='white')
+
         except FileNotFoundError:
             self.hash_value.set("File not found")
-            self.result_entry.config(bg='white')
+            self.result_label.config(bg='white')
 
 
 
